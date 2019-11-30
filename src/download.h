@@ -43,8 +43,9 @@ typedef enum {
 /**
  * @brief Program config structure
  * 
- * Holds the data required to log in to an FTP server,
- * adhering to the following example:
+ * Holds data required to access an FTP server.
+ * The details stored in this struct will be used for
+ * the following connection string:
  * ftp://[<user>:<password>@]<host>/<url-path>
  */
 typedef struct config {
