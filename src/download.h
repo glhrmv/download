@@ -15,42 +15,45 @@
 
 /**
  * @brief Some FTP server return codes as an enum
- * 
+ *
  * Taken from: https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes
- * 
+ *
  */
 typedef enum {
-	// 200 Series (Success)
-	READY_NEW_USER = 220,
-	USER_LOGGED_IN = 230,
-	USER_LOGGED_OUT = 231,
-	ENTERING_PASSIVE_MODE = 227,
-	
-	// 300 Series (Command accepted, on hold)
-	USER_OK = 331,
-	NEED_ACCOUNT = 332,
+  // 200 Series (Success)
+  READY_NEW_USER = 220,
+  USER_LOGGED_IN = 230,
+  USER_LOGGED_OUT = 231,
+  ENTERING_PASSIVE_MODE = 227,
 
-	// 400 Series (Command not accepted)
-	INVALID_USER_OR_PASS = 430,
+  // 300 Series (Command accepted, on hold)
+  USER_OK = 331,
+  NEED_ACCOUNT = 332,
 
-	// 500 Series (Syntax error)
-	SYNTAX_ERR = 501,
-	BAD_SEQUENCE = 503,
-	NOT_LOGGED_IN = 530,
-	FILE_UNAVAILABLE = 550
+  // 400 Series (Command not accepted)
+  INVALID_USER_OR_PASS = 430,
+
+  // 500 Series (Syntax error)
+  SYNTAX_ERR = 501,
+  BAD_SEQUENCE = 503,
+  NOT_LOGGED_IN = 530,
+  FILE_UNAVAILABLE = 550
 } server_response_code_t;
 
 /**
  * @brief Program config structure
- * 
+ *
  * Holds data required to access an FTP server.
  * The details stored in this struct will be used for
  * the following connection string:
  * ftp://[<user>:<password>@]<host>/<url-path>
  */
 typedef struct config {
-	char* user; // Username
-	char* pass; // Password
-	char* host; // Host
-	char* url_path; // URL path
+  char* user;      // Username
+  char* pass;      // Password
+  char* host;      // Host
+  char* url_path;  // URL path
 } config_t;
+
+int set_config(config_t* config, char** argv);
+int run(const config_t* config);
