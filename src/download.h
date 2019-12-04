@@ -11,7 +11,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#define SERVER_PORT 21
+#define FTP_PORT 21  // FTP server port
+#define RES_SIZE 3   // Response code size
 
 /**
  * @brief Some FTP server return codes as an enum
@@ -19,7 +20,7 @@
  * Taken from: https://en.wikipedia.org/wiki/List_of_FTP_server_return_codes
  *
  */
-typedef enum {
+typedef enum server_response_code {
   // 200 Series (Success)
   READY_NEW_USER = 220,
   USER_LOGGED_IN = 230,
