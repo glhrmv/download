@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
 
 int set_config(config_t* config, char** argv) {
   config->user = argv[1];
-  config->pass = argv[2];
+  config->password = argv[2];
   config->host = argv[3];
   config->url_path = argv[4];
   return 0;
