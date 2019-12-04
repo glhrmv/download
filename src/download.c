@@ -20,9 +20,9 @@ int set_config(config_t* config, char** argv) {
   return 0;
 }
 
-int get_response(int socketfd, char* res, size_t n) {
-  res = memset(res, 0, n * sizeof(res[0]));
-  for (int i = 0; i < n; i++) {
+int get_response(int socketfd) {
+  char res[RES_SIZE] = {0};
+  for (int i = 0; i < RES_SIZE; i++) {
     uint8_t b;
     if (!read(socketfd, &b, 1)) return 1;
 
@@ -30,9 +30,9 @@ int get_response(int socketfd, char* res, size_t n) {
     res[i] = b;
   }
 
-  if (!res[0]) return 1;
+  if (!res[0]) return -1;
 
-  return 0;
+  return atoi(res);
 }
 
 int run(const config_t* config) {
@@ -43,15 +43,15 @@ int run(const config_t* config) {
   }
 
   char* ip_addr = inet_ntoa(*((struct in_addr*)h->h_addr));
-  struct sockaddr_in server_addr;
 
   // Server address handling
-  bzero((char*)&server_addr, sizeof(server_addr));
-  server_addr.sin_family = AF_INET;
+  struct sockaddr_in s_addr;
+  bzero((char*)&s_addr, sizeof(s_addr));
+  s_addr.sin_family = AF_INET;
   // 32-bit Internet address network byte ordered
-  server_addr.sin_addr.s_addr = inet_addr(ip_addr);
+  s_addr.sin_addr.s_addr = inet_addr(ip_addr);
   // Server TCP port must be network byte ordered
-  server_addr.sin_port = htons(FTP_PORT);
+  s_addr.sin_port = htons(FTP_PORT);
 
   // Open a TCP socket
   int socketfd;
@@ -61,24 +61,16 @@ int run(const config_t* config) {
   }
 
   // Connect to server
-  printf("Connecting to %s... ", ip_addr);
-  if (connect(socketfd, (struct sockaddr*)&server_addr, sizeof(server_addr)) <
-      0) {
+  printf("Connecting to %s ... ", ip_addr);
+  if (connect(socketfd, (struct sockaddr*)&s_addr, sizeof(s_addr)) < 0) {
     perror("Error connecting to server");
     return 1;
   }
   printf("connected.\n");
 
   // Get server response
-  char *res;
-  if (get_response(socketfd, res, RES_SIZE) != 0) {
-    printf("Error getting response.\n");
-    return 1;
-  }
-
-  if (atoi(res) == READY_NEW_USER) {
-    printf("Got READY NEW USER.\n");
-  }
+  printf("Got response: %d\n", get_response(socketfd));
+  printf("Got response: %d\n", get_response(socketfd));
 
   return 0;
 }

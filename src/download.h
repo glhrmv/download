@@ -56,6 +56,23 @@ typedef struct config {
   char* url_path;  // URL path
 } config_t;
 
+/**
+ * @brief Set the config struct
+ * 
+ * @param config Config struct to be modified
+ * @param argv Command line arguments
+ * @return int 0 on success, non-zero on error
+ */
 int set_config(config_t* config, char** argv);
+
+/**
+ * @brief Read an FTP response
+ * 
+ * Reads #RES_SIZE bytes from the socket.
+ * 
+ * @param socketfd FTP socket file descriptor 
+ * @return int Bytes parsed as integer, negative on error
+ */
+int get_response(int socketfd);
+
 int run(const config_t* config);
-int get_response(int socketfd, char* res, size_t n);
