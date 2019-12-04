@@ -47,7 +47,7 @@ typedef enum server_response_code {
  * Holds data required to access an FTP server.
  * The details stored in this struct will be used for
  * the following connection string:
- * ftp://[<user>:<password>@]<host>/<url-path>
+ * ftp://[<user>:<password>@]<host>/<url_path>
  */
 typedef struct config {
   char* user;      // Username
@@ -58,3 +58,4 @@ typedef struct config {
 
 int set_config(config_t* config, char** argv);
 int run(const config_t* config);
+int get_response(int socketfd, char* res, size_t n);

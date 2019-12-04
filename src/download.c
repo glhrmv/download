@@ -20,6 +20,21 @@ int set_config(config_t* config, char** argv) {
   return 0;
 }
 
+int get_response(int socketfd, char* res, size_t n) {
+  res = memset(res, 0, n * sizeof(res[0]));
+  for (int i = 0; i < n; i++) {
+    uint8_t b;
+    if (!read(socketfd, &b, 1)) return 1;
+
+    if (b < '0' || b > '9') continue;
+    res[i] = b;
+  }
+
+  if (!res[0]) return 1;
+
+  return 0;
+}
+
 int run(const config_t* config) {
   struct hostent* h;
   if ((h = gethostbyname(config->host)) == NULL) {
@@ -55,15 +70,8 @@ int run(const config_t* config) {
   printf("connected.\n");
 
   // Get server response
-  char res[RES_SIZE] = { 0 };
-  for (int i = 0; i < RES_SIZE; i++) {
-    uint8_t b;
-    if (!read(socketfd, &b, 1)) return 1;
-
-    if (b < '0' || b > '9') continue;
-    res[i] = b;
-  }
-  if (!res[0]) {
+  char *res;
+  if (get_response(socketfd, res, RES_SIZE) != 0) {
     printf("Error getting response.\n");
     return 1;
   }
