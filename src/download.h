@@ -10,6 +10,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <ctype.h>
 
 #define FTP_PORT 21  // FTP server port
 #define RES_SIZE 3   // Response code size
@@ -61,18 +62,46 @@ typedef struct config {
  *
  * @param config Config struct to be modified
  * @param argv Command line arguments
- * @return int 0 on success, non-zero on error
+ * @return int Zero on success, negative on error
  */
 int set_config(config_t* config, char** argv);
 
 /**
- * @brief Read an FTP response
+ * @brief Get an FTP response as status code integer
  *
- * Reads #RES_SIZE bytes from the socket.
+ * Note: Reads all bytes until EOL.
+ * Use only when you are expecting a response.
  *
  * @param socketfd FTP socket file descriptor
  * @return int Bytes parsed as integer, negative on error
  */
 int get_response(int socketfd);
 
+/**
+ * @brief Send an FTP command
+ * 
+ * @param socketfd The control connection socket
+ * @param command The FTP command
+ * @param arg Command argument. If none, use NULL
+ * @return int Zero on success, negative on error
+ */
+int send_command(int socketfd, const char* command, const char* arg);
+
+/**
+ * @brief Send the USER command followed by the PASS command
+ * 
+ * @param config 
+ * @param socketfd 
+ * @return int 
+ */
+int send_credentials(const config_t* config, int socketfd);
+
+/**
+ * @brief Run program
+ * 
+ * Calls all needed functions in the right order.
+ * 
+ * @param config Program configuration
+ * @return int Zero on success, negative on error
+ */
 int run(const config_t* config);
