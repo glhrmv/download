@@ -20,6 +20,24 @@ int set_config(config_t* config, char** argv) {
   return 0;
 }
 
+int establish_connection(int socketfd, const char* ip_addr) {
+  // Server address handling
+  struct sockaddr_in s_addr;
+  bzero((char*)&s_addr, sizeof(s_addr));
+  s_addr.sin_family = AF_INET;
+  // 32-bit Internet address network byte ordered
+  s_addr.sin_addr.s_addr = inet_addr(ip_addr);
+  // Server TCP port must be network byte ordered
+  s_addr.sin_port = htons(FTP_PORT);
+
+  if (connect(socketfd, (struct sockaddr*)&s_addr, sizeof(s_addr)) < 0) {
+    perror("connect");
+    return -1;
+  }
+
+  return 0;
+}
+
 int get_response(int socketfd) {
   char res[RES_SIZE];
   int state = 0, i = 0;
@@ -121,37 +139,28 @@ int run(const config_t* config) {
 
   char* ip_addr = inet_ntoa(*((struct in_addr*)h->h_addr));
 
-  // Server address handling
-  struct sockaddr_in s_addr;
-  bzero((char*)&s_addr, sizeof(s_addr));
-  s_addr.sin_family = AF_INET;
-  // 32-bit Internet address network byte ordered
-  s_addr.sin_addr.s_addr = inet_addr(ip_addr);
-  // Server TCP port must be network byte ordered
-  s_addr.sin_port = htons(FTP_PORT);
-
   // Open a TCP socket for the control connection
-  int control_sockfd;
-  if ((control_sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+  int control_socketfd;
+  if ((control_socketfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
     perror("Error creating socket");
     return -1;
   }
 
   // Connect to server
   printf("Connecting to %s ... ", ip_addr);
-  if (connect(control_sockfd, (struct sockaddr*)&s_addr, sizeof(s_addr)) < 0) {
-    perror("Error connecting to server");
+   if (establish_connection(control_socketfd, ip_addr) < 0) {
+    fprintf(stderr, "Error connecting to server\n");
     return -1;
   }
   printf("connected.\n");
 
-  if (get_response(control_sockfd) != READY_NEW_USER) {
+  if (get_response(control_socketfd) != READY_NEW_USER) {
     fprintf(stderr, "Did not get READY NEW USER (220)\n");
     return -1;
   }
   printf("Got READY NEW USER\n");
 
-  if (send_credentials(config, control_sockfd) < 0) {
+  if (send_credentials(config, control_socketfd) < 0) {
     fprintf(stderr, "Error sending credentials\n");
     return -1;
   }
@@ -164,7 +173,7 @@ int run(const config_t* config) {
 
   // TODO: Download file
 
-  close(control_sockfd);
+  close(control_socketfd);
 
   return 0;
 }

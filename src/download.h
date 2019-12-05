@@ -66,6 +66,8 @@ typedef struct config {
  */
 int set_config(config_t* config, char** argv);
 
+int establish_connection(int socketfd, const char* ip_addr);
+
 /**
  * @brief Get an FTP response as status code integer
  *
