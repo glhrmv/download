@@ -2,10 +2,7 @@
 PROG := download
 
 # Compiler flags
-CFLAGS := -Wall -Wextra
-
-# GCC flags
-CCFLAGS = -g -O3 -Wall
+CFLAGS := -Wall -Wextra -Wall
 
 # Source files
 SRCS := $(wildcard ./src/*.c)
@@ -22,7 +19,7 @@ all: $(PROG)
 
 $(PROG): $(OBJS)
 	mkdir -p $(OUT)
-	gcc $(CFLAGS) $(OBJS) -o $(OUT)/$(PROG)
+	gcc-9 $(CFLAGS) $(OBJS) -o $(OUT)/$(PROG)
 
 # Includes the dependency lists (.d files).
 -include $(DEPS)
