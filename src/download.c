@@ -105,7 +105,7 @@ int send_command(int socketfd, const char* command, const char* arg) {
 int send_credentials(const config_t* config, int socketfd) {
   // Send user
   printf("< user %s\n", config->user);
-  if (send_command(socketfd, "USER ", config->user) < 0) {
+  if (send_command(socketfd, "user ", config->user) < 0) {
     fprintf(stderr, "Error sending user\n");
   }
 
@@ -117,7 +117,7 @@ int send_credentials(const config_t* config, int socketfd) {
 
   // Send password
   printf("< pass %s\n", config->password);
-  if (send_command(socketfd, "PASS ", config->password) < 0) {
+  if (send_command(socketfd, "pass ", config->password) < 0) {
     fprintf(stderr, "Error sending password\n");
   }
 
@@ -126,6 +126,21 @@ int send_credentials(const config_t* config, int socketfd) {
     return -1;
   }
   printf("Got USER LOGGED IN\n");
+
+  return 0;
+}
+
+int enter_passive_mode(const config_t* config, int socketfd) {
+  // Send passive
+  printf("< pasv %s\n", config->user);
+  if (send_command(socketfd, "pasv ", config->user) < 0) {
+    fprintf(stderr, "Error sending user\n");
+  }
+
+  if (get_response(socketfd) != ENTERING_PASSIVE_MODE) {
+    fprintf(stderr, "Did not get ENTERING PASSIVE MOE (227)\n");
+    return -1;
+  }
 
   return 0;
 }
@@ -165,7 +180,11 @@ int run(const config_t* config) {
     return -1;
   }
 
-  // TODO: Enter passive mode
+  // Enter passive mode
+  if (enter_passive_mode(config, control_socketfd) < 0) {
+    fprintf(stderr, "Error entering passive mode\n");
+    return -1;
+  }
 
   // TODO: Open file socket
 

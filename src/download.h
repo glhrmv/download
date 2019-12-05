@@ -98,6 +98,8 @@ int send_command(int socketfd, const char* command, const char* arg);
  */
 int send_credentials(const config_t* config, int socketfd);
 
+int enter_passive_mode(const config_t* config, int socketfd);
+
 /**
  * @brief Run program
  * 
