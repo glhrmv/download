@@ -12,6 +12,7 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <libgen.h>
 
 #define FTP_PORT 21        // FTP server port
 #define FTP_CODE_SIZE 3    // Response code size

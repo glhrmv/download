@@ -253,6 +253,23 @@ int parse_pasv_port(char* pasv_res) {
   return port_no;
 }
 
+int download_file(const config_t* config, int socketfd) {
+  char filepath[1024];
+  sprintf(filepath, "%s/Downloads/%s", getenv("HOME"), basename(config->url_path));
+  FILE* file = fopen(filepath, "w+");
+  if (file == NULL) return -1;
+
+  printf("Downloading to %s ...\n", filepath);
+  
+  char buffer;
+  while (read(socketfd, &buffer, 1))
+    fwrite(&buffer, sizeof(buffer), 1, file);
+
+  if (fclose(file)) return -1;
+
+  return 0;
+}
+
 int run(const config_t* config) {
   struct hostent* h;
   if ((h = gethostbyname(config->host)) == NULL) {
@@ -312,11 +329,17 @@ int run(const config_t* config) {
 
   // Send retrieve command
   if (send_retr(config, control_socketfd) < 0) {
-    fprintf(stderr, "Error sending credentials\n");
+    fprintf(stderr, "Error sending retrieve\n");
     return -1;
   }
 
-  // TODO: Download file
+  // Download file
+  if (download_file(config, data_socketfd) < 0) {
+    fprintf(stderr, "Error downloading file\n");
+    return -1;
+  }
+
+  printf("File downloaded successfully.\n");
 
   close(data_socketfd);
   close(control_socketfd);
