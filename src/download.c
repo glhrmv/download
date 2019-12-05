@@ -232,13 +232,16 @@ int parse_pasv_port(char* pasv_res) {
   regex_t compiled_regex;
   regmatch_t group_arr[max_groups];
 
-  if (regcomp(&compiled_regex, regex_string, REG_EXTENDED))
+  int reti = regcomp(&compiled_regex, regex_string, REG_EXTENDED);
+  if (reti) {
+    fprintf(stderr, "Could not compile regex\n");
     return -1;
+  }
 
   char src_cpy[strlen(input) + 1];
   if (regexec(&compiled_regex, input, max_groups, group_arr, 0) == 0) {
     for (unsigned int i = 0; i < max_groups; i++) {
-      if ((size_t) group_arr[i].rm_so == (size_t)-1) break;  // No more groups
+      if ((size_t)group_arr[i].rm_so == (size_t)-1) break;  // No more groups
 
       memset(src_cpy, 0, strlen(input) + 1);
       strcpy(src_cpy, input);
@@ -246,7 +249,8 @@ int parse_pasv_port(char* pasv_res) {
     }
   }
 
-  int port_no = atoi(src_cpy + group_arr[1].rm_so) * 256 + atoi(src_cpy + group_arr[2].rm_so);
+  int port_no = atoi(src_cpy + group_arr[1].rm_so) * 256 +
+                atoi(src_cpy + group_arr[2].rm_so);
 
   regfree(&compiled_regex);
 
@@ -255,15 +259,15 @@ int parse_pasv_port(char* pasv_res) {
 
 int download_file(const config_t* config, int socketfd) {
   char filepath[1024];
-  sprintf(filepath, "%s/Downloads/%s", getenv("HOME"), basename(config->url_path));
+  sprintf(filepath, "%s/Downloads/%s", getenv("HOME"),
+          basename(config->url_path));
   FILE* file = fopen(filepath, "w+");
   if (file == NULL) return -1;
 
   printf("Downloading to %s ...\n", filepath);
-  
+
   char buffer;
-  while (read(socketfd, &buffer, 1))
-    fwrite(&buffer, sizeof(buffer), 1, file);
+  while (read(socketfd, &buffer, 1)) fwrite(&buffer, sizeof(buffer), 1, file);
 
   if (fclose(file)) return -1;
 
