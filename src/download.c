@@ -217,17 +217,18 @@ int parse_pasv_port(char* pasv_res) {
   if (regcomp(&compiled_regex, regex_string, REG_ENHANCED | REG_EXTENDED))
     return -1;
 
+  char src_cpy[strlen(input) + 1];
   if (regexec(&compiled_regex, input, max_groups, group_arr, 0) == 0) {
-    for (unsigned int g = 0; g < max_groups; g++) {
-      if ((size_t) group_arr[g].rm_so == (size_t)-1) break;  // No more groups
+    for (unsigned int i = 0; i < max_groups; i++) {
+      if ((size_t) group_arr[i].rm_so == (size_t)-1) break;  // No more groups
 
-      char sourceCopy[strlen(input) + 1];
-      strcpy(sourceCopy, input);
-      sourceCopy[group_arr[g].rm_eo] = 0;
+      memset(src_cpy, 0, strlen(input) + 1);
+      strcpy(src_cpy, input);
+      src_cpy[group_arr[i].rm_eo] = 0;
     }
   }
 
-  int port_no = group_arr[1].rm_so * 256 + group_arr[2].rm_so;
+  int port_no = atoi(src_cpy + group_arr[1].rm_so) * 256 + atoi(src_cpy + group_arr[2].rm_so);
 
   regfree(&compiled_regex);
 
@@ -246,7 +247,7 @@ int run(const config_t* config) {
   // Open control connection socket
   int control_socketfd;
   if ((control_socketfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-    perror("Error creating socket");
+    perror("socket");
     return -1;
   }
 
@@ -279,20 +280,19 @@ int run(const config_t* config) {
   // Open data connection socket
   int data_socketfd;
   if ((data_socketfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-    perror("Error creating socket");
+    perror("socket");
     return -1;
   }
 
   // Connect to server (data)
   printf("Connecting to %s:%d ... ", ip_addr, fileport);
-  if (establish_connection(control_socketfd, ip_addr, fileport) < 0) {
+  if (establish_connection(data_socketfd, ip_addr, fileport) < 0) {
     fprintf(stderr, "Error connecting to server\n");
     return -1;
   }
   printf("connected.\n");
 
   // TODO: Send retrieve command
-  printf("Got response: %d\n", get_response(data_socketfd));
 
   // TODO: Download file
 
