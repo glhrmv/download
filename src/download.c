@@ -1,4 +1,5 @@
 #include "download.h"
+#define h_addr h_addr_list[0] /* for backward compatibility */
 
 int main(int argc, char** argv) {
   if (argc != 5) {
@@ -30,7 +31,7 @@ int establish_connection(int socketfd, const char* ip_addr, int port) {
   // Server TCP port must be network byte ordered
   s_addr.sin_port = htons(port);
 
-  if (connect(socketfd, (struct sockaddr*)&s_addr, sizeof(s_addr)) < 0) {
+  if (connect(socketfd, (struct sockaddr*)&s_addr, sizeof(s_addr)) != 0) {
     perror("connect");
     return -1;
   }
@@ -227,13 +228,13 @@ int send_retr(const config_t* config, int socketfd) {
 
 int parse_pasv_port(char* pasv_res) {
   const char* input = pasv_res;
-  const char* regex_string = "([0-9]{1,3}),([0-9]{1,3})\\)\\.";
+  const char* regex_string = "([0-9]{1,3}),([0-9]{1,3})\\).";
   size_t max_groups = 3;
   regex_t compiled_regex;
   regmatch_t group_arr[max_groups];
 
   int reti = regcomp(&compiled_regex, regex_string, REG_EXTENDED);
-  if (reti) {
+  if (reti != 0) {
     fprintf(stderr, "Could not compile regex\n");
     return -1;
   }
@@ -245,6 +246,7 @@ int parse_pasv_port(char* pasv_res) {
 
       memset(src_cpy, 0, strlen(input) + 1);
       strcpy(src_cpy, input);
+      printf("Group %d: %s\n", i, src_cpy + group_arr[1].rm_so);
       src_cpy[group_arr[i].rm_eo] = 0;
     }
   }
@@ -292,7 +294,7 @@ int run(const config_t* config) {
 
   // Connect to server (control)
   printf("Connecting to %s:%d ... ", ip_addr, FTP_PORT);
-  if (establish_connection(control_socketfd, ip_addr, FTP_PORT) < 0) {
+  if (establish_connection(control_socketfd, ip_addr, FTP_PORT) != 0) {
     fprintf(stderr, "Error connecting to server\n");
     return -1;
   }
@@ -325,7 +327,7 @@ int run(const config_t* config) {
 
   // Connect to server (data)
   printf("Connecting to %s:%d ... ", ip_addr, fileport);
-  if (establish_connection(data_socketfd, ip_addr, fileport) < 0) {
+  if (establish_connection(data_socketfd, ip_addr, fileport) != 0) {
     fprintf(stderr, "Error connecting to server\n");
     return -1;
   }

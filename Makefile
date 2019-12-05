@@ -19,7 +19,7 @@ all: $(PROG)
 
 $(PROG): $(OBJS)
 	mkdir -p $(OUT)
-	gcc-9 $(CFLAGS) $(OBJS) -o $(OUT)/$(PROG)
+	gcc $(CFLAGS) $(OBJS) -o $(OUT)/$(PROG)
 
 # Includes the dependency lists (.d files).
 -include $(DEPS)
