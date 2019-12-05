@@ -2,9 +2,13 @@
 
 > University project for FEUP, MIEIC (RCOM).
 
-## Usage
+A simple FTP client that downloads a file from an FTP server.
+
+## Building
 
 Run `make` in the root of the project. The `download` executable will be built inside a `bin` directory.
+
+## Usage
 
 The application expects the following usage:
 
