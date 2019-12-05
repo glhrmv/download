@@ -39,7 +39,7 @@ int establish_connection(int socketfd, const char* ip_addr) {
 }
 
 int get_response(int socketfd) {
-  char res[RES_SIZE];
+  char res[FTP_CODE_SIZE];
   int state = 0, i = 0;
   uint8_t c;
 
@@ -91,6 +91,61 @@ int get_response(int socketfd) {
   return atoi(res);
 }
 
+int get_response_w_buf(int socketfd, char* buf) {
+  char res[FTP_CODE_SIZE];
+  memset(buf, 0, FTP_RES_SIZE);
+  int state = 0, i = 0, buf_i = 0;
+  uint8_t c;
+  while (state != 3) {
+    read(socketfd, &c, 1);
+    buf[buf_i++] = c;
+    // Uncomment below line to see entire response
+    printf("%c", c);
+    switch (state) {
+      // Wait for 3 digit number followed by ' ' or '-'
+      case 0:
+        if (isdigit(c)) {
+          res[i] = c;
+          i++;
+        }
+
+        if (c == ' ') {
+          if (i != 3) return -1;
+
+          i = 0;
+          state = 1;
+        }
+
+        if (c == '-') {
+          state = 2;
+          i = 0;
+        }
+        break;
+      // Read until EOL
+      case 1:
+        if (c == '\n') {
+          state = 3;
+        }
+        break;
+      // Waits for response code in multiple line responses
+      case 2:
+        if (c == res[i]) {
+          i++;
+        } else if (i == 3) {
+          if (c == ' ')
+            state = 1;
+          else if (c == '-')
+            i = 0;
+        }
+        break;
+    }
+  }
+  
+  buf[buf_i - 1] = 0;
+  fflush(stdout);
+  return atoi(res);
+}
+
 int send_command(int socketfd, const char* command, const char* arg) {
   if (!write(socketfd, command, strlen(command))) return -1;
 
@@ -137,10 +192,13 @@ int enter_passive_mode(const config_t* config, int socketfd) {
     fprintf(stderr, "Error sending user\n");
   }
 
-  if (get_response(socketfd) != ENTERING_PASSIVE_MODE) {
+  char pasv_res[FTP_RES_SIZE];
+  if (get_response_w_buf(socketfd, pasv_res) != ENTERING_PASSIVE_MODE) {
     fprintf(stderr, "Did not get ENTERING PASSIVE MOE (227)\n");
     return -1;
   }
+
+  printf("pasv response: %s\n", pasv_res);
 
   return 0;
 }
