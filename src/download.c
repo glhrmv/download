@@ -162,6 +162,7 @@ int send_credentials(const config_t* config, int socketfd) {
   printf("< user %s\n", config->user);
   if (send_command(socketfd, "user ", config->user) < 0) {
     fprintf(stderr, "Error sending user\n");
+    return -1;
   }
 
   if (get_response(socketfd) != USER_OK) {
@@ -174,6 +175,7 @@ int send_credentials(const config_t* config, int socketfd) {
   printf("< pass %s\n", config->password);
   if (send_command(socketfd, "pass ", config->password) < 0) {
     fprintf(stderr, "Error sending password\n");
+    return -1;
   }
 
   if (get_response(socketfd) != USER_LOGGED_IN) {
@@ -185,7 +187,7 @@ int send_credentials(const config_t* config, int socketfd) {
   return 0;
 }
 
-int enter_passive_mode(const config_t* config, int socketfd) {
+int send_pasv(const config_t* config, int socketfd) {
   // Send passive
   printf("< pasv %s\n", config->user);
   if (send_command(socketfd, "pasv ", config->user) < 0) {
@@ -205,6 +207,22 @@ int enter_passive_mode(const config_t* config, int socketfd) {
   }
 
   return port;
+}
+
+int send_retr(const config_t* config, int socketfd) {
+  // Send passive
+  printf("< retr %s\n", config->url_path);
+  if (send_command(socketfd, "retr ", config->url_path) < 0) {
+    fprintf(stderr, "Error sending retr\n");
+    return -1;
+  }
+
+  if (get_response(socketfd) != FILE_STATUS_OK) {
+    fprintf(stderr, "Did not get FILE STATUS OK (150)\n");
+    return -1;
+  }
+
+  return 0;
 }
 
 int parse_pasv_port(char* pasv_res) {
@@ -271,7 +289,7 @@ int run(const config_t* config) {
   }
 
   // Enter passive mode, retrieve file port
-  int fileport = enter_passive_mode(config, control_socketfd);
+  int fileport = send_pasv(config, control_socketfd);
   if (fileport < 0) {
     fprintf(stderr, "Error entering passive mode\n");
     return -1;
@@ -292,7 +310,11 @@ int run(const config_t* config) {
   }
   printf("connected.\n");
 
-  // TODO: Send retrieve command
+  // Send retrieve command
+  if (send_retr(config, control_socketfd) < 0) {
+    fprintf(stderr, "Error sending credentials\n");
+    return -1;
+  }
 
   // TODO: Download file
 

@@ -24,20 +24,23 @@
  *
  */
 typedef enum server_response_code {
-  // 200 Series (Success)
+  // 100 Series (Positive preliminary)
+  FILE_STATUS_OK = 150,
+
+  // 200 Series (Positive completion)
   READY_NEW_USER = 220,
   USER_LOGGED_IN = 230,
   USER_LOGGED_OUT = 231,
   ENTERING_PASSIVE_MODE = 227,
 
-  // 300 Series (Command accepted, on hold)
+  // 300 Series (Positive intermediate)
   USER_OK = 331,
   NEED_ACCOUNT = 332,
 
-  // 400 Series (Command not accepted)
+  // 400 Series (Transient negative completion)
   INVALID_USER_OR_PASS = 430,
 
-  // 500 Series (Syntax error)
+  // 500 Series (Permanent negative completion)
   SYNTAX_ERR = 501,
   BAD_SEQUENCE = 503,
   NOT_LOGGED_IN = 530,
@@ -118,7 +121,7 @@ int send_credentials(const config_t* config, int socketfd);
  * @param socketfd The control connection socket
  * @return int File port to open data connection in on success, negative on error
  */
-int enter_passive_mode(const config_t* config, int socketfd);
+int send_pasv(const config_t* config, int socketfd);
 
 int parse_pasv_port(char* pasv_res);
 
