@@ -20,7 +20,7 @@ int set_config(config_t* config, char** argv) {
   return 0;
 }
 
-int establish_connection(int socketfd, const char* ip_addr) {
+int establish_connection(int socketfd, const char* ip_addr, int port) {
   // Server address handling
   struct sockaddr_in s_addr;
   bzero((char*)&s_addr, sizeof(s_addr));
@@ -28,7 +28,7 @@ int establish_connection(int socketfd, const char* ip_addr) {
   // 32-bit Internet address network byte ordered
   s_addr.sin_addr.s_addr = inet_addr(ip_addr);
   // Server TCP port must be network byte ordered
-  s_addr.sin_port = htons(FTP_PORT);
+  s_addr.sin_port = htons(port);
 
   if (connect(socketfd, (struct sockaddr*)&s_addr, sizeof(s_addr)) < 0) {
     perror("connect");
@@ -140,7 +140,7 @@ int get_response_w_buf(int socketfd, char* buf) {
         break;
     }
   }
-  
+
   buf[buf_i - 1] = 0;
   fflush(stdout);
   return atoi(res);
@@ -198,9 +198,40 @@ int enter_passive_mode(const config_t* config, int socketfd) {
     return -1;
   }
 
-  printf("pasv response: %s\n", pasv_res);
+  int port = parse_pasv_port(pasv_res);
+  if (port < 0) {
+    fprintf(stderr, "Error calculating port number\n");
+    return -1;
+  }
 
-  return 0;
+  return port;
+}
+
+int parse_pasv_port(char* pasv_res) {
+  const char* input = pasv_res;
+  const char* regex_string = "([0-9]{1,3}),([0-9]{1,3})\\)\\.";
+  size_t max_groups = 3;
+  regex_t compiled_regex;
+  regmatch_t group_arr[max_groups];
+
+  if (regcomp(&compiled_regex, regex_string, REG_ENHANCED | REG_EXTENDED))
+    return -1;
+
+  if (regexec(&compiled_regex, input, max_groups, group_arr, 0) == 0) {
+    for (unsigned int g = 0; g < max_groups; g++) {
+      if ((size_t) group_arr[g].rm_so == (size_t)-1) break;  // No more groups
+
+      char sourceCopy[strlen(input) + 1];
+      strcpy(sourceCopy, input);
+      sourceCopy[group_arr[g].rm_eo] = 0;
+    }
+  }
+
+  int port_no = group_arr[1].rm_so * 256 + group_arr[2].rm_so;
+
+  regfree(&compiled_regex);
+
+  return port_no;
 }
 
 int run(const config_t* config) {
@@ -212,16 +243,16 @@ int run(const config_t* config) {
 
   char* ip_addr = inet_ntoa(*((struct in_addr*)h->h_addr));
 
-  // Open a TCP socket for the control connection
+  // Open control connection socket
   int control_socketfd;
   if ((control_socketfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
     perror("Error creating socket");
     return -1;
   }
 
-  // Connect to server
-  printf("Connecting to %s ... ", ip_addr);
-   if (establish_connection(control_socketfd, ip_addr) < 0) {
+  // Connect to server (control)
+  printf("Connecting to %s:%d ... ", ip_addr, FTP_PORT);
+  if (establish_connection(control_socketfd, ip_addr, FTP_PORT) < 0) {
     fprintf(stderr, "Error connecting to server\n");
     return -1;
   }
@@ -231,25 +262,41 @@ int run(const config_t* config) {
     fprintf(stderr, "Did not get READY NEW USER (220)\n");
     return -1;
   }
-  printf("Got READY NEW USER\n");
 
+  // Send credentials
   if (send_credentials(config, control_socketfd) < 0) {
     fprintf(stderr, "Error sending credentials\n");
     return -1;
   }
 
-  // Enter passive mode
-  if (enter_passive_mode(config, control_socketfd) < 0) {
+  // Enter passive mode, retrieve file port
+  int fileport = enter_passive_mode(config, control_socketfd);
+  if (fileport < 0) {
     fprintf(stderr, "Error entering passive mode\n");
     return -1;
   }
 
-  // TODO: Open file socket
+  // Open data connection socket
+  int data_socketfd;
+  if ((data_socketfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+    perror("Error creating socket");
+    return -1;
+  }
+
+  // Connect to server (data)
+  printf("Connecting to %s:%d ... ", ip_addr, fileport);
+  if (establish_connection(control_socketfd, ip_addr, fileport) < 0) {
+    fprintf(stderr, "Error connecting to server\n");
+    return -1;
+  }
+  printf("connected.\n");
 
   // TODO: Send retrieve command
+  printf("Got response: %d\n", get_response(data_socketfd));
 
   // TODO: Download file
 
+  close(data_socketfd);
   close(control_socketfd);
 
   return 0;

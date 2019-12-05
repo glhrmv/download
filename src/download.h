@@ -4,10 +4,11 @@
 #include <ctype.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <regex.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <strings.h>
+#include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -61,13 +62,13 @@ typedef struct config {
 /**
  * @brief Set the config struct
  *
- * @param config Config struct to be modified
+ * @param config Program configuration to be modified
  * @param argv Command line arguments
  * @return int Zero on success, negative on error
  */
 int set_config(config_t* config, char** argv);
 
-int establish_connection(int socketfd, const char* ip_addr);
+int establish_connection(int socketfd, const char* ip_addr, int port);
 
 /**
  * @brief Get an FTP response as status code integer
@@ -89,17 +90,17 @@ int get_response(int socketfd);
  * @param buf
  * @return int FTP status code on success, negative on error
  */
-get_response_w_buf(int socketfd, char* buf)
+int get_response_w_buf(int socketfd, char* buf);
 
-    /**
-     * @brief Send an FTP command
-     *
-     * @param socketfd The control connection socket
-     * @param command The FTP command
-     * @param arg Command argument. If none, use NULL
-     * @return int Zero on success, negative on error
-     */
-    int send_command(int socketfd, const char* command, const char* arg);
+/**
+ * @brief Send an FTP command
+ *
+ * @param socketfd The control connection socket
+ * @param command The FTP command
+ * @param arg Command argument. If none, use NULL
+ * @return int Zero on success, negative on error
+ */
+int send_command(int socketfd, const char* command, const char* arg);
 
 /**
  * @brief Send the USER command followed by the PASS command
@@ -110,7 +111,16 @@ get_response_w_buf(int socketfd, char* buf)
  */
 int send_credentials(const config_t* config, int socketfd);
 
+/**
+ * @brief Enter passive mode, get file port
+ * 
+ * @param config Program configuration
+ * @param socketfd The control connection socket
+ * @return int File port to open data connection in on success, negative on error
+ */
 int enter_passive_mode(const config_t* config, int socketfd);
+
+int parse_pasv_port(char* pasv_res);
 
 /**
  * @brief Run program
