@@ -232,7 +232,7 @@ int parse_pasv_port(char* pasv_res) {
   regex_t compiled_regex;
   regmatch_t group_arr[max_groups];
 
-  if (regcomp(&compiled_regex, regex_string, REG_ENHANCED | REG_EXTENDED))
+  if (regcomp(&compiled_regex, regex_string, REG_EXTENDED))
     return -1;
 
   char src_cpy[strlen(input) + 1];

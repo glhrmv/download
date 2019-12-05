@@ -72,6 +72,14 @@ typedef struct config {
  */
 int set_config(config_t* config, char** argv);
 
+/**
+ * @brief Establish connection to a given IP address on a given port
+ * 
+ * @param socketfd Socket file descriptor
+ * @param ip_addr IP address
+ * @param port Port number
+ * @return int Zero on success, negative on error
+ */
 int establish_connection(int socketfd, const char* ip_addr, int port);
 
 /**
@@ -124,7 +132,42 @@ int send_credentials(const config_t* config, int socketfd);
  */
 int send_pasv(const config_t* config, int socketfd);
 
+/**
+ * @brief Helper function used by send_pasv
+ * 
+ * Parses the 227 response string, which is 
+ * similar to the following example:
+ * > 227 Entering Passive Mode (h1,h2,h3,h4,p1,p2).
+ 
+ * This function will return the calculation of
+ * p1 * 256 + p2, the data port to connect to.
+ * 
+ * 
+ * @param pasv_res Passive mode response string
+ * @return int File port to open data connection in on success, negative on error
+ */
 int parse_pasv_port(char* pasv_res);
+
+/**
+ * @brief Send retrieve command
+ * 
+ * @param config Program configuration
+ * @param socketfd The control connection socket
+ * @return int Zero on success, negative on error
+ */
+int send_retr(const config_t* config, int socketfd);
+
+/**
+ * @brief Download file from server on port
+ * 
+ * The file is stored on $HOME/Downloads/file,
+ * Where file is the basepath of the config's url-path
+ * 
+ * @param config Program configuration
+ * @param socketfd The data connection socket
+ * @return int Zero on success, negative on error
+ */
+int download_file(const config_t* config, int socketfd);
 
 /**
  * @brief Run program
