@@ -2,6 +2,7 @@
 
 #include <arpa/inet.h>
 #include <ctype.h>
+#include <libgen.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <regex.h>
@@ -12,11 +13,13 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
-#include <libgen.h>
 
 #define FTP_PORT 21        // FTP server port
 #define FTP_CODE_SIZE 3    // Response code size
 #define FTP_RES_SIZE 1024  // FTP response buffer size
+
+// for backward compatibility
+#define h_addr h_addr_list[0]
 
 /**
  * @brief Some FTP server return codes as an enum
@@ -74,7 +77,7 @@ int set_config(config_t* config, char** argv);
 
 /**
  * @brief Establish connection to a given IP address on a given port
- * 
+ *
  * @param socketfd Socket file descriptor
  * @param ip_addr IP address
  * @param port Port number
@@ -88,7 +91,7 @@ int establish_connection(int socketfd, const char* ip_addr, int port);
  * Note: Reads all bytes until EOL.
  * Use only when you are expecting a response.
  *
- * @param socketfd FTP socket file descriptor
+ * @param socketfd Socket file descriptor
  * @return int FTP status code on success, negative on error
  */
 int get_response(int socketfd);
@@ -96,10 +99,12 @@ int get_response(int socketfd);
 /**
  * @brief Get an FTP response, place response buffer into buf
  *
- * Like get_response
+ * Like get_response, but additionally places the
+ * entire response string into a buffer.
+ * The buffer is cleared before being modified.
  *
- * @param socketfd
- * @param buf
+ * @param socketfd Socket file descriptor
+ * @param buf Buffer to store response string into
  * @return int FTP status code on success, negative on error
  */
 int get_response_w_buf(int socketfd, char* buf);
@@ -107,7 +112,7 @@ int get_response_w_buf(int socketfd, char* buf);
 /**
  * @brief Send an FTP command
  *
- * @param socketfd The control connection socket
+ * @param socketfd Socket file descriptor
  * @param command The FTP command
  * @param arg Command argument. If none, use NULL
  * @return int Zero on success, negative on error
@@ -117,52 +122,54 @@ int send_command(int socketfd, const char* command, const char* arg);
 /**
  * @brief Send the USER command followed by the PASS command
  *
- * @param config
- * @param socketfd
- * @return int
+ * @param config Program configuration
+ * @param socketfd Socket file descriptor
+ * @return int Zero on success, negative on error
  */
 int send_credentials(const config_t* config, int socketfd);
 
 /**
  * @brief Enter passive mode, get file port
- * 
+ *
  * @param config Program configuration
- * @param socketfd The control connection socket
- * @return int File port to open data connection in on success, negative on error
+ * @param socketfd Socket file descriptor
+ * @return int File port to open data connection in on success, negative on
+ * error
  */
 int send_pasv(const config_t* config, int socketfd);
 
 /**
  * @brief Helper function used by send_pasv
- * 
- * Parses the 227 response string, which is 
+ *
+ * Parses the 227 response string, which is
  * similar to the following example:
  * > 227 Entering Passive Mode (h1,h2,h3,h4,p1,p2).
- 
+
  * This function will return the calculation of
  * p1 * 256 + p2, the data port to connect to.
- * 
- * 
+ *
+ *
  * @param pasv_res Passive mode response string
- * @return int File port to open data connection in on success, negative on error
+ * @return int File port to open data connection in on success, negative on
+ error
  */
 int parse_pasv_port(char* pasv_res);
 
 /**
  * @brief Send retrieve command
- * 
+ *
  * @param config Program configuration
- * @param socketfd The control connection socket
+ * @param socketfd Socket file descriptor
  * @return int Zero on success, negative on error
  */
 int send_retr(const config_t* config, int socketfd);
 
 /**
  * @brief Download file from server on port
- * 
+ *
  * The file is stored on $HOME/Downloads/file,
  * Where file is the basepath of the config's url-path
- * 
+ *
  * @param config Program configuration
  * @param socketfd The data connection socket
  * @return int Zero on success, negative on error

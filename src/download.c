@@ -1,5 +1,4 @@
 #include "download.h"
-#define h_addr h_addr_list[0] /* for backward compatibility */
 
 int main(int argc, char** argv) {
   if (argc != 5) {
@@ -246,7 +245,6 @@ int parse_pasv_port(char* pasv_res) {
 
       memset(src_cpy, 0, strlen(input) + 1);
       strcpy(src_cpy, input);
-      printf("Group %d: %s\n", i, src_cpy + group_arr[1].rm_so);
       src_cpy[group_arr[i].rm_eo] = 0;
     }
   }
@@ -266,7 +264,7 @@ int download_file(const config_t* config, int socketfd) {
   FILE* file = fopen(filepath, "w+");
   if (file == NULL) return -1;
 
-  printf("Downloading to %s ...\n", filepath);
+  printf(" %s ... ", filepath);
 
   char buffer;
   while (read(socketfd, &buffer, 1)) fwrite(&buffer, sizeof(buffer), 1, file);
@@ -340,15 +338,17 @@ int run(const config_t* config) {
   }
 
   // Download file
+  printf("Downloading to");
   if (download_file(config, data_socketfd) < 0) {
     fprintf(stderr, "Error downloading file\n");
     return -1;
   }
-
-  printf("File downloaded successfully.\n");
+  printf("done.\n");
 
   close(data_socketfd);
   close(control_socketfd);
+
+  printf("Connections closed.\n");
 
   return 0;
 }
