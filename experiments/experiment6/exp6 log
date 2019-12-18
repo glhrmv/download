@@ -1,0 +1,729 @@
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000000    Cisco_d4:1c:03        Cisco_d4:1c:03        LOOP     60     Reply
+
+Frame 1: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+Ethernet II, Src: Cisco_d4:1c:03 (30:37:a6:d4:1c:03), Dst: Cisco_d4:1c:03 (30:37:a6:d4:1c:03)
+Configuration Test Protocol (loopback)
+Data (40 bytes)
+
+0000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+0020  00 00 00 00 00 00 00 00                           ........
+
+No.     Time           Source                Destination           Protocol Length Info
+      2 0.426736305    172.16.40.1           172.16.1.1            DNS      81     Standard query 0x3c31 AAAA tux41.netlab.fe.up.pt
+
+Frame 2: 81 bytes on wire (648 bits), 81 bytes captured (648 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 172.16.1.1
+User Datagram Protocol, Src Port: 33255, Dst Port: 53
+Domain Name System (query)
+
+No.     Time           Source                Destination           Protocol Length Info
+      3 0.428216705    172.16.1.1            172.16.40.1           DNS      141    Standard query response 0x3c31 AAAA tux41.netlab.fe.up.pt SOA ns.netlab.fe.up.pt
+
+Frame 3: 141 bytes on wire (1128 bits), 141 bytes captured (1128 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 172.16.1.1, Dst: 172.16.40.1
+User Datagram Protocol, Src Port: 53, Dst Port: 33255
+Domain Name System (response)
+
+No.     Time           Source                Destination           Protocol Length Info
+      4 0.428299123    172.16.40.1           172.16.1.1            DNS      65     Standard query 0x5ada AAAA tux41
+
+Frame 4: 65 bytes on wire (520 bits), 65 bytes captured (520 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 172.16.1.1
+User Datagram Protocol, Src Port: 47070, Dst Port: 53
+Domain Name System (query)
+
+No.     Time           Source                Destination           Protocol Length Info
+      5 0.429403032    172.16.1.1            172.16.40.1           DNS      140    Standard query response 0x5ada No such name AAAA tux41 SOA a.root-servers.net
+
+Frame 5: 140 bytes on wire (1120 bits), 140 bytes captured (1120 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 172.16.1.1, Dst: 172.16.40.1
+User Datagram Protocol, Src Port: 53, Dst Port: 47070
+Domain Name System (response)
+
+No.     Time           Source                Destination           Protocol Length Info
+      6 0.452717999    Cisco_d4:1c:03        Spanning-tree-(for-bridges)_00 STP      60     Conf. Root = 32768/40/30:37:a6:d4:1c:00  Cost = 0  Port = 0x8003
+
+Frame 6: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+      7 0.635161258    172.16.40.1           172.16.1.1            DNS      81     Standard query 0x9801 AAAA tux41.netlab.fe.up.pt
+
+Frame 7: 81 bytes on wire (648 bits), 81 bytes captured (648 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 172.16.1.1
+User Datagram Protocol, Src Port: 60750, Dst Port: 53
+Domain Name System (query)
+
+No.     Time           Source                Destination           Protocol Length Info
+      8 0.636487338    172.16.1.1            172.16.40.1           DNS      141    Standard query response 0x9801 AAAA tux41.netlab.fe.up.pt SOA ns.netlab.fe.up.pt
+
+Frame 8: 141 bytes on wire (1128 bits), 141 bytes captured (1128 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 172.16.1.1, Dst: 172.16.40.1
+User Datagram Protocol, Src Port: 53, Dst Port: 60750
+Domain Name System (response)
+
+No.     Time           Source                Destination           Protocol Length Info
+      9 0.636568769    172.16.40.1           172.16.1.1            DNS      65     Standard query 0xde60 AAAA tux41
+
+Frame 9: 65 bytes on wire (520 bits), 65 bytes captured (520 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 172.16.1.1
+User Datagram Protocol, Src Port: 35873, Dst Port: 53
+Domain Name System (query)
+
+No.     Time           Source                Destination           Protocol Length Info
+     10 0.637735011    172.16.1.1            172.16.40.1           DNS      140    Standard query response 0xde60 No such name AAAA tux41 SOA a.root-servers.net
+
+Frame 10: 140 bytes on wire (1120 bits), 140 bytes captured (1120 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 172.16.1.1, Dst: 172.16.40.1
+User Datagram Protocol, Src Port: 53, Dst Port: 35873
+Domain Name System (response)
+
+No.     Time           Source                Destination           Protocol Length Info
+     11 2.457456393    Cisco_d4:1c:03        Spanning-tree-(for-bridges)_00 STP      60     Conf. Root = 32768/40/30:37:a6:d4:1c:00  Cost = 0  Port = 0x8003
+
+Frame 11: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+     12 4.462298459    Cisco_d4:1c:03        Spanning-tree-(for-bridges)_00 STP      60     Conf. Root = 32768/40/30:37:a6:d4:1c:00  Cost = 0  Port = 0x8003
+
+Frame 12: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+     13 5.439490349    G-ProCom_8c:af:af     HewlettP_5a:7b:ea     ARP      42     Who has 172.16.40.254? Tell 172.16.40.1
+
+Frame 13: 42 bytes on wire (336 bits), 42 bytes captured (336 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Address Resolution Protocol (request)
+
+No.     Time           Source                Destination           Protocol Length Info
+     14 5.439838393    HewlettP_5a:7b:ea     G-ProCom_8c:af:af     ARP      60     172.16.40.254 is at 00:21:5a:5a:7b:ea
+
+Frame 14: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Address Resolution Protocol (reply)
+
+No.     Time           Source                Destination           Protocol Length Info
+     15 5.616946039    HewlettP_5a:7b:ea     G-ProCom_8c:af:af     ARP      60     Who has 172.16.40.1? Tell 172.16.40.254
+
+Frame 15: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Address Resolution Protocol (request)
+
+No.     Time           Source                Destination           Protocol Length Info
+     16 5.616971252    G-ProCom_8c:af:af     HewlettP_5a:7b:ea     ARP      42     172.16.40.1 is at 00:0f:fe:8c:af:af
+
+Frame 16: 42 bytes on wire (336 bits), 42 bytes captured (336 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Address Resolution Protocol (reply)
+
+No.     Time           Source                Destination           Protocol Length Info
+     17 6.467367525    Cisco_d4:1c:03        Spanning-tree-(for-bridges)_00 STP      60     Conf. Root = 32768/40/30:37:a6:d4:1c:00  Cost = 0  Port = 0x8003
+
+Frame 17: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+     18 8.472043839    Cisco_d4:1c:03        Spanning-tree-(for-bridges)_00 STP      60     Conf. Root = 32768/40/30:37:a6:d4:1c:00  Cost = 0  Port = 0x8003
+
+Frame 18: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+     19 9.508792060    172.16.40.1           172.16.1.1            DNS      69     Standard query 0x7f49 A ftp.up.pt
+
+Frame 19: 69 bytes on wire (552 bits), 69 bytes captured (552 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 172.16.1.1
+User Datagram Protocol, Src Port: 48472, Dst Port: 53
+Domain Name System (query)
+
+No.     Time           Source                Destination           Protocol Length Info
+     20 9.510508804    172.16.1.1            172.16.40.1           DNS      355    Standard query response 0x7f49 A ftp.up.pt CNAME mirrors.up.pt A 193.137.29.15 NS ns4.up.pt NS ns1.up.pt NS ns2.up.pt NS ns3.up.pt A 193.137.55.30 AAAA 2001:690:2200:a10::30 A 193.137.55.31 AAAA 2001:690:2200:a10::31 A 193.137.55.32 AAAA 2001:690:2200:a10::32 A 193.137.55.33 AAAA 2001:690:2200:a10::33
+
+Frame 20: 355 bytes on wire (2840 bits), 355 bytes captured (2840 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 172.16.1.1, Dst: 172.16.40.1
+User Datagram Protocol, Src Port: 53, Dst Port: 48472
+Domain Name System (response)
+
+No.     Time           Source                Destination           Protocol Length Info
+     21 9.510653946    172.16.40.1           193.137.29.15         TCP      74     60735 → 21 [SYN] Seq=0 Win=29200 Len=0 MSS=1460 SACK_PERM=1 TSval=1466577 TSecr=0 WS=128
+
+Frame 21: 74 bytes on wire (592 bits), 74 bytes captured (592 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     22 9.514130102    193.137.29.15         172.16.40.1           TCP      74     21 → 60735 [SYN, ACK] Seq=0 Ack=1 Win=28960 Len=0 MSS=1380 SACK_PERM=1 TSval=798857767 TSecr=1466577 WS=128
+
+Frame 22: 74 bytes on wire (592 bits), 74 bytes captured (592 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     23 9.514155487    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=1 Win=29312 Len=0 TSval=1466578 TSecr=798857767
+
+Frame 23: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     24 9.519709118    193.137.29.15         172.16.40.1           FTP      139    Response: 220-Welcome to the University of Porto's mirror archive (mirrors.up.pt)
+
+Frame 24: 139 bytes on wire (1112 bits), 139 bytes captured (1112 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 1, Ack: 1, Len: 73
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     25 9.519724117    193.137.29.15         172.16.40.1           FTP      135    Response: 220----------------------------------------------------------------
+
+Frame 25: 135 bytes on wire (1080 bits), 135 bytes captured (1080 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 74, Ack: 1, Len: 69
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     26 9.519727856    193.137.29.15         172.16.40.1           FTP      72     Response: 220-
+
+Frame 26: 72 bytes on wire (576 bits), 72 bytes captured (576 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 143, Ack: 1, Len: 6
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     27 9.519755331    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=74 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 27: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 74, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     28 9.519767051    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=143 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 28: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 143, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     29 9.519772229    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=149 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 29: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 149, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     30 9.520628891    193.137.29.15         172.16.40.1           FTP      151    Response: 220-All connections and transfers are logged. The max number of connections is 200.
+
+Frame 30: 151 bytes on wire (1208 bits), 151 bytes captured (1208 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 149, Ack: 1, Len: 85
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     31 9.520639994    193.137.29.15         172.16.40.1           FTP      72     Response: 220-
+
+Frame 31: 72 bytes on wire (576 bits), 72 bytes captured (576 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 234, Ack: 1, Len: 6
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     32 9.520643082    193.137.29.15         172.16.40.1           FTP      140    Response: 220-For more information please visit our website: http://mirrors.up.pt/
+
+Frame 32: 140 bytes on wire (1120 bits), 140 bytes captured (1120 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 240, Ack: 1, Len: 74
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     33 9.520660516    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=234 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 33: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 234, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     34 9.520669184    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=240 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 34: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 240, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     35 9.520674126    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=314 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 35: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 314, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     36 9.520911476    193.137.29.15         172.16.40.1           FTP      127    Response: 220-Questions and comments can be sent to mirrors@uporto.pt
+
+Frame 36: 127 bytes on wire (1016 bits), 127 bytes captured (1016 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 314, Ack: 1, Len: 61
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     37 9.520920328    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=375 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 37: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 375, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     38 9.520924930    193.137.29.15         172.16.40.1           FTP      72     Response: 220-
+
+Frame 38: 72 bytes on wire (576 bits), 72 bytes captured (576 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 375, Ack: 1, Len: 6
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     39 9.520929436    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=381 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 39: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 381, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     40 9.520933176    193.137.29.15         172.16.40.1           FTP      72     Response: 220-
+
+Frame 40: 72 bytes on wire (576 bits), 72 bytes captured (576 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 381, Ack: 1, Len: 6
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     41 9.520937467    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=387 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 41: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 387, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     42 9.520941497    193.137.29.15         172.16.40.1           FTP      72     Response: 220 
+
+Frame 42: 72 bytes on wire (576 bits), 72 bytes captured (576 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 387, Ack: 1, Len: 6
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     43 9.520945708    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [ACK] Seq=1 Ack=393 Win=29312 Len=0 TSval=1466580 TSecr=798857768
+
+Frame 43: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 393, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     44 9.521722637    172.16.40.1           193.137.29.15         FTP      71     Request: user 
+
+Frame 44: 71 bytes on wire (568 bits), 71 bytes captured (568 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 1, Ack: 393, Len: 5
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     45 9.523924477    193.137.29.15         172.16.40.1           TCP      66     21 → 60735 [ACK] Seq=393 Ack=6 Win=29056 Len=0 TSval=798857769 TSecr=1466580
+
+Frame 45: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 393, Ack: 6, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     46 9.523947069    172.16.40.1           193.137.29.15         FTP      76     Request: anonymous
+
+Frame 46: 76 bytes on wire (608 bits), 76 bytes captured (608 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 6, Ack: 393, Len: 10
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     47 9.525833540    193.137.29.15         172.16.40.1           TCP      66     21 → 60735 [ACK] Seq=393 Ack=16 Win=29056 Len=0 TSval=798857770 TSecr=1466581
+
+Frame 47: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 393, Ack: 16, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     48 9.525856704    193.137.29.15         172.16.40.1           FTP      100    Response: 331 Please specify the password.
+
+Frame 48: 100 bytes on wire (800 bits), 100 bytes captured (800 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 393, Ack: 16, Len: 34
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     49 9.527607783    172.16.40.1           193.137.29.15         FTP      71     Request: pass 
+
+Frame 49: 71 bytes on wire (568 bits), 71 bytes captured (568 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 16, Ack: 427, Len: 5
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     50 9.576007270    193.137.29.15         172.16.40.1           TCP      66     21 → 60735 [ACK] Seq=427 Ack=21 Win=29056 Len=0 TSval=798857782 TSecr=1466582
+
+Frame 50: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 427, Ack: 21, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     51 9.576043326    172.16.40.1           193.137.29.15         FTP      71     Request: pass
+
+Frame 51: 71 bytes on wire (568 bits), 71 bytes captured (568 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 21, Ack: 427, Len: 5
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     52 9.577978990    193.137.29.15         172.16.40.1           TCP      66     21 → 60735 [ACK] Seq=427 Ack=26 Win=29056 Len=0 TSval=798857783 TSecr=1466594
+
+Frame 52: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 427, Ack: 26, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     53 9.580781719    193.137.29.15         172.16.40.1           FTP      89     Response: 230 Login successful.
+
+Frame 53: 89 bytes on wire (712 bits), 89 bytes captured (712 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 427, Ack: 26, Len: 23
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     54 9.580876969    172.16.40.1           193.137.29.15         FTP      71     Request: pasv 
+
+Frame 54: 71 bytes on wire (568 bits), 71 bytes captured (568 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 26, Ack: 450, Len: 5
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     55 9.611833504    Cisco_d4:1c:03        CDP/VTP/DTP/PAgP/UDLD CDP      432    Device ID: tux-sw4  Port ID: FastEthernet0/1  
+
+Frame 55: 432 bytes on wire (3456 bits), 432 bytes captured (3456 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Cisco Discovery Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+     56 9.624003253    193.137.29.15         172.16.40.1           TCP      66     21 → 60735 [ACK] Seq=450 Ack=31 Win=29056 Len=0 TSval=798857795 TSecr=1466595
+
+Frame 56: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 450, Ack: 31, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     57 9.624029875    172.16.40.1           193.137.29.15         FTP      76     Request: anonymous
+
+Frame 57: 76 bytes on wire (608 bits), 76 bytes captured (608 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 31, Ack: 450, Len: 10
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     58 9.626546579    193.137.29.15         172.16.40.1           TCP      66     21 → 60735 [ACK] Seq=450 Ack=41 Win=29056 Len=0 TSval=798857795 TSecr=1466606
+
+Frame 58: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 450, Ack: 41, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     59 9.627309506    193.137.29.15         172.16.40.1           FTP      116    Response: 227 Entering Passive Mode (193,137,29,15,213,6).
+
+Frame 59: 116 bytes on wire (928 bits), 116 bytes captured (928 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 450, Ack: 41, Len: 50
+File Transfer Protocol (FTP)
+[Current working directory: ]
+[Command: retr ]
+[Command frame: 63]
+
+No.     Time           Source                Destination           Protocol Length Info
+     60 9.627706008    172.16.40.1           193.137.29.15         TCP      74     45402 → 54534 [SYN] Seq=0 Win=29200 Len=0 MSS=1460 SACK_PERM=1 TSval=1466607 TSecr=0 WS=128
+
+Frame 60: 74 bytes on wire (592 bits), 74 bytes captured (592 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 45402, Dst Port: 54534, Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     61 9.630541346    193.137.29.15         172.16.40.1           TCP      74     54534 → 45402 [SYN, ACK] Seq=0 Ack=1 Win=28960 Len=0 MSS=1380 SACK_PERM=1 TSval=798857796 TSecr=1466607 WS=128
+
+Frame 61: 74 bytes on wire (592 bits), 74 bytes captured (592 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 54534, Dst Port: 45402, Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     62 9.630570450    172.16.40.1           193.137.29.15         TCP      66     45402 → 54534 [ACK] Seq=1 Ack=1 Win=29312 Len=0 TSval=1466607 TSecr=798857796
+
+Frame 62: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 45402, Dst Port: 54534, Seq: 1, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     63 9.630652442    172.16.40.1           193.137.29.15         FTP      71     Request: retr 
+
+Frame 63: 71 bytes on wire (568 bits), 71 bytes captured (568 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 41, Ack: 500, Len: 5
+File Transfer Protocol (FTP)
+[Current working directory: ]
+[Command response frames: 1]
+[Command response bytes: 1193]
+[Command response first frame: 68]
+[Command response last frame: 68]
+[Setup frame: 59]
+
+No.     Time           Source                Destination           Protocol Length Info
+     64 9.675928888    193.137.29.15         172.16.40.1           TCP      66     21 → 60735 [ACK] Seq=500 Ack=46 Win=29056 Len=0 TSval=798857808 TSecr=1466607
+
+Frame 64: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 500, Ack: 46, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     65 9.675967125    172.16.40.1           193.137.29.15         FTP      80     Request: debian/README
+
+Frame 65: 80 bytes on wire (640 bits), 80 bytes captured (640 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 46, Ack: 500, Len: 14
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     66 9.678565223    193.137.29.15         172.16.40.1           TCP      66     21 → 60735 [ACK] Seq=500 Ack=60 Win=29056 Len=0 TSval=798857808 TSecr=1466619
+
+Frame 66: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 500, Ack: 60, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     67 9.679671177    193.137.29.15         172.16.40.1           FTP      139    Response: 150 Opening BINARY mode data connection for debian/README (1193 bytes).
+
+Frame 67: 139 bytes on wire (1112 bits), 139 bytes captured (1112 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 500, Ack: 60, Len: 73
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     68 9.680531796    193.137.29.15         172.16.40.1           FTP-DATA 1259   FTP Data: 1193 bytes (PASV) (retr )
+
+Frame 68: 1259 bytes on wire (10072 bits), 1259 bytes captured (10072 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 54534, Dst Port: 45402, Seq: 1, Ack: 1, Len: 1193
+FTP Data (1193 bytes data)
+[Setup frame: 59]
+[Setup method: PASV]
+[Command: retr ]
+Command frame: 63
+[Current working directory: ]
+Line-based text data (28 lines)
+
+No.     Time           Source                Destination           Protocol Length Info
+     69 9.680545922    193.137.29.15         172.16.40.1           TCP      66     54534 → 45402 [FIN, ACK] Seq=1194 Ack=1 Win=29056 Len=0 TSval=798857809 TSecr=1466607
+
+Frame 69: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 54534, Dst Port: 45402, Seq: 1194, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     70 9.680563521    172.16.40.1           193.137.29.15         TCP      66     45402 → 54534 [ACK] Seq=1 Ack=1194 Win=32128 Len=0 TSval=1466620 TSecr=798857809
+
+Frame 70: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 45402, Dst Port: 54534, Seq: 1, Ack: 1194, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     71 9.681759372    172.16.40.1           193.137.29.15         TCP      66     45402 → 54534 [FIN, ACK] Seq=1 Ack=1195 Win=32128 Len=0 TSval=1466620 TSecr=798857809
+
+Frame 71: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 45402, Dst Port: 54534, Seq: 1, Ack: 1195, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     72 9.681834602    172.16.40.1           193.137.29.15         TCP      66     60735 → 21 [FIN, ACK] Seq=60 Ack=573 Win=29312 Len=0 TSval=1466620 TSecr=798857808
+
+Frame 72: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 60, Ack: 573, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     73 9.683611837    193.137.29.15         172.16.40.1           TCP      66     54534 → 45402 [ACK] Seq=1195 Ack=2 Win=29056 Len=0 TSval=798857809 TSecr=1466620
+
+Frame 73: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 54534, Dst Port: 45402, Seq: 1195, Ack: 2, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     74 9.683633928    193.137.29.15         172.16.40.1           FTP      90     Response: 226 Transfer complete.
+
+Frame 74: 90 bytes on wire (720 bits), 90 bytes captured (720 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 573, Ack: 60, Len: 24
+File Transfer Protocol (FTP)
+[Current working directory: ]
+
+No.     Time           Source                Destination           Protocol Length Info
+     75 9.683657101    172.16.40.1           193.137.29.15         TCP      54     60735 → 21 [RST] Seq=60 Win=0 Len=0
+
+Frame 75: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 60, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     76 9.684791332    193.137.29.15         172.16.40.1           TCP      66     21 → 60735 [FIN, ACK] Seq=597 Ack=61 Win=29056 Len=0 TSval=798857810 TSecr=1466620
+
+Frame 76: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface 0
+Ethernet II, Src: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea), Dst: G-ProCom_8c:af:af (00:0f:fe:8c:af:af)
+Internet Protocol Version 4, Src: 193.137.29.15, Dst: 172.16.40.1
+Transmission Control Protocol, Src Port: 21, Dst Port: 60735, Seq: 597, Ack: 61, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     77 9.684805743    172.16.40.1           193.137.29.15         TCP      54     60735 → 21 [RST] Seq=61 Win=0 Len=0
+
+Frame 77: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface 0
+Ethernet II, Src: G-ProCom_8c:af:af (00:0f:fe:8c:af:af), Dst: HewlettP_5a:7b:ea (00:21:5a:5a:7b:ea)
+Internet Protocol Version 4, Src: 172.16.40.1, Dst: 193.137.29.15
+Transmission Control Protocol, Src Port: 60735, Dst Port: 21, Seq: 61, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     78 10.007421329   Cisco_d4:1c:03        Cisco_d4:1c:03        LOOP     60     Reply
+
+Frame 78: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+Ethernet II, Src: Cisco_d4:1c:03 (30:37:a6:d4:1c:03), Dst: Cisco_d4:1c:03 (30:37:a6:d4:1c:03)
+Configuration Test Protocol (loopback)
+Data (40 bytes)
+
+0000  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+0010  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00   ................
+0020  00 00 00 00 00 00 00 00                           ........
+
+No.     Time           Source                Destination           Protocol Length Info
+     79 10.477045877   Cisco_d4:1c:03        Spanning-tree-(for-bridges)_00 STP      60     Conf. Root = 32768/40/30:37:a6:d4:1c:00  Cost = 0  Port = 0x8003
+
+Frame 79: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+     80 12.481865205   Cisco_d4:1c:03        Spanning-tree-(for-bridges)_00 STP      60     Conf. Root = 32768/40/30:37:a6:d4:1c:00  Cost = 0  Port = 0x8003
+
+Frame 80: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+     81 14.486724935   Cisco_d4:1c:03        Spanning-tree-(for-bridges)_00 STP      60     Conf. Root = 32768/40/30:37:a6:d4:1c:00  Cost = 0  Port = 0x8003
+
+Frame 81: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
+
+No.     Time           Source                Destination           Protocol Length Info
+     82 16.491738544   Cisco_d4:1c:03        Spanning-tree-(for-bridges)_00 STP      60     Conf. Root = 32768/40/30:37:a6:d4:1c:00  Cost = 0  Port = 0x8003
+
+Frame 82: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+IEEE 802.3 Ethernet 
+Logical-Link Control
+Spanning Tree Protocol
