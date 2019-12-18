@@ -2,7 +2,7 @@
 
 int main(int argc, char** argv) {
   if (argc != 5) {
-    printf("Usage: %s <user> <password> <host> <url-path>\n", argv[0]);
+    fprintf(stderr, "Usage: %s <user> <password> <host> <url-path>\n", argv[0]);
     return -1;
   }
 
@@ -45,7 +45,6 @@ int get_response(int socketfd) {
 
   while (state != 3) {
     read(socketfd, &c, 1);
-    // Uncomment below line to see entire response
     printf("%c", c);
     switch (state) {
       // Wait for 3 digit number followed by ' ' or '-'
@@ -73,7 +72,7 @@ int get_response(int socketfd) {
           state = 3;
         }
         break;
-      // Waits for response code in multiple line responses
+      // Wait for response code in multiple line responses
       case 2:
         if (c == res[i]) {
           i++;
@@ -99,7 +98,6 @@ int get_response_w_buf(int socketfd, char* buf) {
   while (state != 3) {
     read(socketfd, &c, 1);
     buf[buf_i++] = c;
-    // Uncomment below line to see entire response
     printf("%c", c);
     switch (state) {
       // Wait for 3 digit number followed by ' ' or '-'
@@ -127,7 +125,7 @@ int get_response_w_buf(int socketfd, char* buf) {
           state = 3;
         }
         break;
-      // Waits for response code in multiple line responses
+      // Wait for response code in multiple line responses
       case 2:
         if (c == res[i]) {
           i++;
@@ -141,6 +139,8 @@ int get_response_w_buf(int socketfd, char* buf) {
     }
   }
 
+  // Required in lab room computer
+  // Safe to remove otherwise
   printf("Res: ");
   for (size_t i = 0; i < 4; i++)
     printf("%c", res[i]);
@@ -192,11 +192,12 @@ int send_credentials(const config_t* config, int socketfd) {
   return 0;
 }
 
-int send_pasv(const config_t* config, int socketfd) {
+int send_pasv(int socketfd) {
   // Send passive
-  printf("< pasv %s\n", config->user);
-  if (send_command(socketfd, "pasv ", config->user) < 0) {
+  printf("< pasv\n");
+  if (send_command(socketfd, "pasv", NULL) < 0) {
     fprintf(stderr, "Error sending user\n");
+    return -1;
   }
 
   char pasv_res[FTP_RES_SIZE];
@@ -280,6 +281,7 @@ int download_file(const config_t* config, int socketfd) {
 }
 
 int run(const config_t* config) {
+  // Get IP address
   struct hostent* h;
   if ((h = gethostbyname(config->host)) == NULL) {
     herror("gethostbyname");
@@ -315,7 +317,7 @@ int run(const config_t* config) {
   }
 
   // Enter passive mode, retrieve file port
-  int fileport = send_pasv(config, control_socketfd);
+  int fileport = send_pasv(control_socketfd);
   if (fileport < 0) {
     fprintf(stderr, "Error entering passive mode\n");
     return -1;

@@ -131,12 +131,11 @@ int send_credentials(const config_t* config, int socketfd);
 /**
  * @brief Enter passive mode, get file port
  *
- * @param config Program configuration
  * @param socketfd Socket file descriptor
  * @return int File port to open data connection in on success, negative on
  * error
  */
-int send_pasv(const config_t* config, int socketfd);
+int send_pasv(int socketfd);
 
 /**
  * @brief Helper function used by send_pasv
@@ -147,7 +146,6 @@ int send_pasv(const config_t* config, int socketfd);
 
  * This function will return the calculation of
  * p1 * 256 + p2, the data port to connect to.
- *
  *
  * @param pasv_res Passive mode response string
  * @return int File port to open data connection in on success, negative on
