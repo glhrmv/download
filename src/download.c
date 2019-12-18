@@ -141,6 +141,11 @@ int get_response_w_buf(int socketfd, char* buf) {
     }
   }
 
+  printf("Res: ");
+  for (size_t i = 0; i < 4; i++)
+    printf("%c", res[i]);
+  printf("\n");
+
   buf[buf_i - 1] = 0;
   fflush(stdout);
   return atoi(res);
