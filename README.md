@@ -13,7 +13,7 @@ Run `make` in the root of the project. The `download` executable will be built i
 The application expects the following usage:
 
 ```
-./bin/download <user> <password> <host> <url_path>
+download <user> <password> <host> <url_path>
 ```
 
 These arguments are used to form the connection string: `ftp://[user[:password]@]host/url-path`.
